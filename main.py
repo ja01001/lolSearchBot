@@ -47,6 +47,7 @@ async def on_message(message):
         desc_text = "$help - 봇 도움말 불러오기 \n\
                     $contribute - 넣고 싶은 내용 있으면 연락주세요 \n\
                     $game - 현재 게임 정보를 알려 드립니다. \n\
+                    $setting - 만약 게임중인데 검색이 안될경우  \n\
                     *다른기능은 추후 추가예정.*"
         await message.channel.send(embed=embed)
     
@@ -78,7 +79,7 @@ async def on_message(message):
             await message.channel.send("시간초과!")
         else:
             async with message.channel.typing():
-                req = requests.get(SEARCH_URL"/game/"+m.content)
+                req = requests.get(SEARCH_URL+"/game/"+m.content)
                 tt = req.text
                 
                 tmp = eval(tt)
